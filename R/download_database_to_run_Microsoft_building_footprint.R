@@ -143,7 +143,7 @@ download.file(
 # ==============================================================================
 # END SCRIPT
 # [May not work on your system] (work in Ubuntu 20.04.4 LTS. You need to have the tree package install.)
-if(Sys.info()["sysname"] != "Linux"){
+if(.Platform$OS.type != "unix"){
   # Print directory tree structure (package info : https://packages.ubuntu.com/jammy/tree)
   system(paste("tree -h", HDD, sep = " "))
 }

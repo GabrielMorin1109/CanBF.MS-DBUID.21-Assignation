@@ -109,8 +109,8 @@ if(isTRUE(loop.Q)){
       
       # Test which point is within the bbox of the Dissemination Block
       # Cluster: 
-      numCores <- detectCores()
-      cl <- makeCluster(numCores-2)
+      numCores <- parallel::detectCores()
+      cl <- parallel::makeCluster(numCores-2)
       parallel::clusterExport(cl= cl,varlist = c("DB.dt.pr", "mp_crds")) # export the needed variables into each cluster
       parallel::clusterEvalQ(cl = cl, {                                  # export library into each cluster
         library(data.table)
@@ -135,7 +135,7 @@ if(isTRUE(loop.Q)){
             ]
           }
         )
-      stopCluster(cl)
+      parallel::stopCluster(cl)
     } 
     
     # Vector of DBUID is used in writing the file that return the intersects match.
